@@ -1,6 +1,9 @@
 {
-  "name": "photo-collage",
-  "version": "1.1.0",
+  "name": "nf-photo-collage",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
   "description": "Turns an array of images into a photo collage",
   "main": "index.js",
   "scripts": {
@@ -8,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/classdojo/photo-collage.git"
+    "url": "https://github.com/NodeFactoryIo/photo-collage"
   },
   "keywords": [
     "photo",
@@ -20,10 +23,6 @@
   ],
   "author": "Peter Hayes",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/classdojo/photo-collage/issues"
-  },
-  "homepage": "https://github.com/classdojo/photo-collage#readme",
   "dependencies": {
     "bluebird": "^3.3.5",
     "canvas": "^2.6.1",
