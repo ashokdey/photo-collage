@@ -1,29 +1,23 @@
-# photo-collage
+# nf-photo-collage
+
 Combines several images into a photo collage.
 
-## Example
+This is slightly restructured version of original [photo-collage](https://github.com/classdojo/photo-collage) repo. It is also using [RectangleEquals fork](https://github.com/RectangleEquals/photo-collage)  so it is using Canvas v2.
 
-#### Source files
-![Source file 1](https://github.com/classdojo/photo-collage/blob/master/img/src1.jpg?raw=true)
-![Source file 2](https://github.com/classdojo/photo-collage/blob/master/img/src2.jpg?raw=true)
-![Source file 3](https://github.com/classdojo/photo-collage/blob/master/img/src3.jpg?raw=true)
-![Source file 4](https://github.com/classdojo/photo-collage/blob/master/img/src4.jpg?raw=true)
-![Source file 5](https://github.com/classdojo/photo-collage/blob/master/img/src5.jpg?raw=true)
-![Source file 6](https://github.com/classdojo/photo-collage/blob/master/img/src6.jpg?raw=true)
-
-#### Result
-![Result](https://github.com/classdojo/photo-collage/blob/master/img/result_no_spacing.png?raw=true)
+### Changes
+- Removed header and support for adding text
+- Add support for adding image as background
+- Add typings (`index.d.ts`)
 
 ## Installation
-`npm install --save photo-collage`  
+`yarn add nf-photo-collage`  
 
 
-This library depends on `node-canvas`, which may require additional setup. See [their installation page](https://github.com/Automattic/node-canvas/wiki/_pages) for details.
+This library depends on `node-canvas` (v2), which may require additional setup. See [their installation page](https://github.com/Automattic/node-canvas/wiki/_pages) for details.
 
 ## Usage
-The following example creates a 2x3 collage from a variety of image sources.
-```js
-const createCollage = require("photo-collage");
+```ts
+import createCollage from "nf-photo-collage";
 
 const options = {
   sources: [
@@ -39,17 +33,8 @@ const options = {
   imageWidth: 350, // width of each image
   imageHeight: 250, // height of each image
   // backgroundColor: "#cccccc", // optional, defaults to #eeeeee.
+  backgroundImage: "./localfile.png" // same formats supported as source
   spacing: 2, // optional: pixels between each image
-  lines: [
-    {font: "", color: "", text: "Sometimes we want to find out when a single one time event has"},
-    {font: "", color: "", text: "Sometimes we want to find out when a single one time event has"},
-    {font: "", color: "", text: "Sometimes we want to find out when a single one time event has"},
-    {font: "", color: "", text: "Sometimes we want to find out when a single one time event has"},
-    {font: "", color: "", text: "Sometimes we want to find out when a single one time event has"},
-  ],
-  //text: "Sometimes we want to find out when a single one time event has finished. For example - a stream is done. For this we can use new Promise. Note that this option should be considered only if automatic conversion isn't possible.Note that promises model a single value through time, they only resolve once - so while they're a good fit for a single event, they are not recommended for multiple event APIs."
-  //textStyle: {color: "#fff", fontSize: 20, font: "Arial", height: 300}
-  // we can use either lines or text (text will be warped)
 };
 
 createCollage(options)
@@ -59,3 +44,16 @@ createCollage(options)
     src.pipe(dest);
   });
 ```
+
+## Example
+
+#### Source files
+![Source file 1](https://github.com/classdojo/photo-collage/blob/master/img/src1.jpg?raw=true)
+![Source file 2](https://github.com/classdojo/photo-collage/blob/master/img/src2.jpg?raw=true)
+![Source file 3](https://github.com/classdojo/photo-collage/blob/master/img/src3.jpg?raw=true)
+![Source file 4](https://github.com/classdojo/photo-collage/blob/master/img/src4.jpg?raw=true)
+![Source file 5](https://github.com/classdojo/photo-collage/blob/master/img/src5.jpg?raw=true)
+![Source file 6](https://github.com/classdojo/photo-collage/blob/master/img/src6.jpg?raw=true)
+
+#### Result
+![Result](https://github.com/classdojo/photo-collage/blob/master/img/result_no_spacing.png?raw=true)
