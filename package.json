@@ -1,6 +1,6 @@
 {
   "name": "nf-photo-collage",
-  "version": "1.1.13",
+  "version": "1.2.0",
   "publishConfig": {
     "access": "public"
   },
