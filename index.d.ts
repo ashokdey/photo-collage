@@ -1,5 +1,5 @@
 export type CollageOptions = {
-    sources: string|Buffer[];
+    sources: string[]|Buffer[];
     width: number;
     height: number;
     imageWidth: number;
