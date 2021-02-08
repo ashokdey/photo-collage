@@ -66,20 +66,15 @@ module.exports = function (options) {
 
   const ctx = canvas.getContext("2d");
 
-  if(options.backgroundImage != "") {
-    const bckgBuffer = getPhoto(options.backgroundImage);
-    bckgBuffer.then((bckg) => {
-      const image = new Image();
-      image.src = bckg;
-      ctx.drawImage(image, 0, 0, canvasWidth, canvasHeight)
-    })
-  } else {
-    ctx.fillStyle = options.backgroundColor;
-    ctx.fillRect(0, 0, canvasWidth, canvasHeight);
-  }
+  ctx.fillStyle = options.backgroundColor;
+  ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
-  const sources = options.sources;
+  const hasBackgroundImage = options.backgroundImage != "";
+  const backgroundSource = hasBackgroundImage ? [options.backgroundImage] : [];
+  
+  const sources = backgroundSource.concat(options.sources);
   let maxImages = options.width * options.height;
+  if(hasBackgroundImage) maxImages++;
  
   return Promise
     .map(sources, getPhoto)
@@ -88,10 +83,16 @@ module.exports = function (options) {
 
       const img = new Image();
       img.src = photoBuffer;
-
-      const x = (i % options.width) * (options.imageWidth + options.spacing);
-      const y = Math.floor(i / options.width) * (options.imageHeight + options.spacing);
-      ctx.drawImage(img, x, y, options.imageWidth, options.imageHeight);
+      // draw background image if present
+      if (hasBackgroundImage && i == 0) {
+        ctx.drawImage(img, 0, 0, canvasWidth, canvasHeight)
+      } else {
+        // offset for background
+        if (hasBackgroundImage) i--;
+        const x = (i % options.width) * (options.imageWidth + options.spacing);
+        const y = Math.floor(i / options.width) * (options.imageHeight + options.spacing);
+        ctx.drawImage(img, x, y, options.imageWidth, options.imageHeight);
+      }
     })
     .then(() => {})
     .return(canvas);
