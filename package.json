@@ -1,5 +1,5 @@
 {
-  "name": "nf-photo-collage",
+  "name": "@nodefactory/photo-collage",
   "version": "1.4.0",
   "publishConfig": {
     "access": "public"
@@ -24,7 +24,7 @@
   ],
   "author": "Peter Hayes",
   "contributors": [
-    "Mak Muftic"
+    "Mak Muftic <mak@nodefactory.io>"
   ],
   "license": "ISC",
   "dependencies": {
