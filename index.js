@@ -79,10 +79,6 @@ module.exports = function (options) {
 
   const sources = options.sources;
   let maxImages = options.width * options.height;
-  if ((options.header || {}).image) {
-    maxImages += 1;
-    sources.unshift(options.header.image);
-  }
  
   return Promise
     .map(sources, getPhoto)
@@ -92,17 +88,9 @@ module.exports = function (options) {
       const img = new Image();
       img.src = photoBuffer;
 
-      if ((options.header || {}).image) { // only for header
-        if (!i) { // first time
-          ctx.drawImage(img, 0, 0, canvasWidth, options.header.height);
-          return;
-        }
-        i -= 1;
-      }
-
       const x = (i % options.width) * (options.imageWidth + options.spacing);
       const y = Math.floor(i / options.width) * (options.imageHeight + options.spacing);
-      ctx.drawImage(img, x, y + headerHeight, options.imageWidth, options.imageHeight);
+      ctx.drawImage(img, x, y, options.imageWidth, options.imageHeight);
     })
     .then(() => {})
     .return(canvas);
