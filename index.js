@@ -65,8 +65,6 @@ module.exports = function (options) {
   const canvas = createCanvas(canvasWidth, canvasHeight);
 
   const ctx = canvas.getContext("2d");
-  ctx.fillStyle = options.backgroundColor;
-  ctx.fillRect(0, 0, canvasWidth, canvasHeight);
 
   if(options.backgroundImage != "") {
     const bckgBuffer = getPhoto(options.backgroundImage);
@@ -75,6 +73,9 @@ module.exports = function (options) {
       image.src = bckg;
       ctx.drawImage(image, 0, 0, canvasWidth, canvasHeight)
     })
+  } else {
+    ctx.fillStyle = options.backgroundColor;
+    ctx.fillRect(0, 0, canvasWidth, canvasHeight);
   }
 
   const sources = options.sources;
