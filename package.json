@@ -30,7 +30,8 @@
   "dependencies": {
     "bluebird": "^3.3.5",
     "canvas": "^2.6.1",
-    "request": "^2.72.0"
+    "request": "^2.72.0",
+    "stream": "0.0.2"
   },
   "devDependencies": {
     "buffer-equal": "^1.0.0",

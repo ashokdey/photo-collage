@@ -1,3 +1,5 @@
+import { Readable } from "stream";
+
 export type CollageOptions = {
     sources: string[]|Buffer[];
     width: number;
@@ -10,8 +12,8 @@ export type CollageOptions = {
 }
 
 export interface Canvas {
-    jpegStream(): ReadableStream
-    pngStream(): ReadableStream
+    jpegStream(): Readable
+    pngStream(): Readable
 }
 
 export default function createImageCollage(options: CollageOptions): Promise<Canvas>
