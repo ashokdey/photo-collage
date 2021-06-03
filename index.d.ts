@@ -6,14 +6,14 @@ export type CollageOptions = {
     height: number;
     imageWidth: number;
     imageHeight: number;
-    backgroundColor: string;
-    backgroundImage: string;
-    spacing: number;
+    backgroundColor?: string;
+    backgroundImage?: string;
+    spacing?: number;
 }
 
 export interface Canvas {
-    jpegStream(): Readable
-    pngStream(): Readable
+    jpegStream(): any
+    pngStream(): any
 }
 
 export default function createImageCollage(options: CollageOptions): Promise<Canvas>
